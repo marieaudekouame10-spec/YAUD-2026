@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+:root {
+
+    --ivoire: #fff8ef;
+    --peche: #f5c5aa;
+    --corail: #d9826b;
+    --orange: #e89a55;
+    --or: #c9a45c;
+    --texte: #5a4032;
+    --blanc: #ffffff;
+
+}
+
+
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    font-family: 'Montserrat', sans-serif;
+    background: var(--ivoire);
+    color: var(--texte);
+
+}
+
+
+
+.app {
+
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+
+
+/* =========================
+   ACCUEIL IMMERSIF
+========================= */
+
+
+.hero {
+
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+    linear-gradient(
+        rgba(80,40,20,.35),
+        rgba(80,40,20,.55)
+    ),
+    url("images/background.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+
+.overlay {
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(255,220,180,.35),
+        transparent 60%
+    );
+
+}
+
+
+
+.hero-content {
+
+    position: relative;
+    z-index: 2;
+
+    text-align:center;
+
+    color:white;
+
+    padding:30px;
+
+    animation: fadeUp 1.5s ease;
+
+}
+
+
+
+.photos-couple {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.photos-couple img {
+
+    width:85px;
+    height:120px;
+
+    object-fit:cover;
+
+    border-radius:50px;
+
+    border:3px solid rgba(255,255,255,.8);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+
+
+.small-title {
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:12px;
+
+}
+
+
+
+h1 {
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:55px;
+
+    line-height:.9;
+
+    margin:20px 0;
+
+    font-weight:600;
+
+}
+
+
+
+h1 span {
+
+    font-size:35px;
+
+}
+
+
+
+.date {
+
+    font-size:18px;
+
+    margin-top:15px;
+
+}
+
+
+
+.location {
+
+    margin:10px;
+
+}
+
+
+
+.theme {
+
+    font-style:italic;
+
+    color:#ffe1b3;
+
+}
+
+
+
+button {
+
+
+    margin-top:25px;
+
+    padding:16px 35px;
+
+    border-radius:40px;
+
+    border:none;
+
+    background:
+    linear-gradient(
+    135deg,
+    var(--or),
+    var(--orange)
+    );
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.25);
+
+    transition:.3s;
+
+}
+
+
+
+button:hover {
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* =========================
+   APPLICATION
+========================= */
+
+
+main {
+
+    padding:25px;
+
+}
+
+
+
+.card {
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    box-shadow:
+    0 15px 35px rgba(120,70,40,.12);
+
+}
+
+
+
+.verse {
+
+    text-align:center;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:22px;
+
+}
+
+
+
+.verse span {
+
+    display:block;
+
+    margin-top:15px;
+
+    color:var(--corail);
+
+    font-family:'Montserrat';
+
+    font-size:13px;
+
+}
+
+
+
+
+
+.menu-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+
+
+.app-card {
+
+    background:
+    linear-gradient(
+    145deg,
+    #fff,
+    #fff1e6
+    );
+
+    padding:22px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.app-card:hover {
+
+    transform:translateY(-5px);
+
+}
+
+
+
+.icon {
+
+    font-size:35px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.app-card h3 {
+
+    font-family:'Cormorant Garamond';
+
+    font-size:25px;
+
+}
+
+
+
+.app-card p {
+
+    font-size:12px;
+
+}
+
+
+
+
+
+/* =========================
+ SECTIONS
+========================= */
+
+
+.hidden,
+.hidden-section {
+
+    display:none;
+
+}
+
+
+
+.content-section h2 {
+
+    font-family:'Cormorant Garamond';
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.content-section h3 {
+
+    margin-top:25px;
+
+    color:var(--corail);
+
+}
+
+
+
+ul {
+
+    padding-left:20px;
+
+}
+
+
+
+li {
+
+    margin:10px 0;
+
+}
+
+
+
+input {
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:30px;
+
+    border:1px solid #ddd;
+
+    margin-top:20px;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+.map-button {
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:var(--corail);
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+}
+
+
+
+
+
+/* ANIMATION */
+
+
+@keyframes fadeUp {
+
+
+from {
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+
+h1 {
+
+    font-size:48px;
+
+}
+
+
+.menu-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+.photos-couple img {
+
+    width:75px;
+
+    height:105px;
+
+}
+
+
+main {
+
+    padding:15px;
+
+}
+
+
+
+}
