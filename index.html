@@ -15,7 +15,7 @@
 
     <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 
 </head>
 
@@ -35,7 +35,7 @@
 <section class="hero">
 
 
-<div class="overlay" aria-hidden="true"></div>
+<div class="overlay"></div>
 
 
 <div class="hero-content">
@@ -115,11 +115,8 @@ Entrer dans notre univers
 </section>
 
 
-<!-- Verse visible on homepage (requested) -->
-<section class="verse card homepage-verse">
-  <p>« Par-dessus tout, revêtez-vous de l’amour, qui est le lien de la perfection. »</p>
-  <span>Colossiens 3:14</span>
-</section>
+
+
 
 
 
@@ -128,7 +125,8 @@ Entrer dans notre univers
 ===================== -->
 
 
-<main id="universe" class="hidden">
+<main id="universe" class="hidden" aria-hidden="true">
+
 
 
 
@@ -161,10 +159,10 @@ Colossiens 3:14
 
 
 
-<div class="app-card" onclick="showSection('table')">
+<div class="app-card" onclick="showSection('table')" role="button" tabindex="0">
 
 
-<div class="icon">
+<div class="icon-pill" aria-hidden="true">
 
 🔍
 
@@ -176,6 +174,7 @@ Colossiens 3:14
 Trouver ma table
 
 </h3>
+<div class="sep" aria-hidden="true"></div>
 
 
 <p>
@@ -190,10 +189,10 @@ Retrouvez facilement votre table.
 
 
 
-<div class="app-card" onclick="showSection('food')">
+<div class="app-card" onclick="showSection('food')" role="button" tabindex="0">
 
 
-<div class="icon">
+<div class="icon-pill" aria-hidden="true">
 
 🍽️
 
@@ -205,6 +204,7 @@ Retrouvez facilement votre table.
 Quelques saveurs
 
 </h3>
+<div class="sep" aria-hidden="true"></div>
 
 
 <p>
@@ -219,10 +219,10 @@ Découvrez notre réception.
 
 
 
-<div class="app-card" onclick="showSection('gift')">
+<div class="app-card" onclick="showSection('gift')" role="button" tabindex="0">
 
 
-<div class="icon">
+<div class="icon-pill" aria-hidden="true">
 
 🎁
 
@@ -234,6 +234,7 @@ Découvrez notre réception.
 Informations utiles
 
 </h3>
+<div class="sep" aria-hidden="true"></div>
 
 
 <p>
@@ -248,10 +249,10 @@ Quelques informations pratiques.
 
 
 
-<div class="app-card" onclick="showSection('route')">
+<div class="app-card" onclick="showSection('route')" role="button" tabindex="0">
 
 
-<div class="icon">
+<div class="icon-pill" aria-hidden="true">
 
 🗺️
 
@@ -263,6 +264,7 @@ Quelques informations pratiques.
 Itinéraire
 
 </h3>
+<div class="sep" aria-hidden="true"></div>
 
 
 <p>
@@ -306,6 +308,7 @@ Entrez votre nom pour découvrir votre table.
 id="searchGuest"
 type="text"
 placeholder="Votre prénom ou nom"
+aria-label="Rechercher un invité"
 >
 
 
@@ -316,7 +319,7 @@ Rechercher
 </button>
 
 
-<div id="result">
+<div id="result" aria-live="polite">
 
 </div>
 
@@ -425,7 +428,6 @@ Merci du fond du cœur pour votre délicatesse.
 
 
 
-
 <!-- ITINERAIRE -->
 
 
@@ -473,21 +475,27 @@ Ouvrir Google Maps — Menara Garden
 </div>
 
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 
 
 <script>
-
 if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async function(){
+    try{
+      // unregister any existing service workers first to ensure clients receive the latest files
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r=>r.unregister()));
+      // clear caches (best-effort)
+      if(window.caches){
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k=>caches.delete(k)));
+      }
+    }catch(e){ console.warn('SW cleanup failed', e); }
 
-window.addEventListener("load", function(){
-
-navigator.serviceWorker.register("service-worker.js");
-
-});
-
+    // register the (new) service worker
+    navigator.serviceWorker.register("service-worker.js");
+  });
 }
-
 </script>
 
 
