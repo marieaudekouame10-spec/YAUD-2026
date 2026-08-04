@@ -2,21 +2,15 @@
   "name": "Yoane & Marie-Aude - Notre univers",
   "short_name": "Yoane & Marie-Aude",
   "description": "Le guide digital de notre mariage traditionnel",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#fff8ef",
   "theme_color": "#d9826b",
-
   "icons": [
     {
-      "src": "images/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "images/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "decorative-pattern.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }
