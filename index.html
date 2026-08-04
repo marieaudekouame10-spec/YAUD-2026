@@ -9,7 +9,7 @@
 
     <title>Yoane & Marie-Aude | Notre univers</title>
 
-    <meta name="theme-color" content="#ff7e5f">
+    <meta name="theme-color" content="#ff8a65">
 
     <meta name="description" content="Le guide digital du mariage de Yoane et Marie-Aude">
 
@@ -120,7 +120,6 @@ Entrer dans notre univers
 
 
 
-
 <!-- =====================
      UNIVERS DIGITAL
 ===================== -->
@@ -155,11 +154,7 @@ Colossiens 3:14
 
 
 
-
-
-
 <section class="menu-grid">
-
 
 
 
@@ -193,9 +188,6 @@ Retrouvez facilement votre table.
 
 
 
-
-
-
 <div class="app-card" onclick="showSection('food')">
 
 
@@ -221,9 +213,6 @@ Découvrez notre réception.
 
 
 </div>
-
-
-
 
 
 
@@ -257,10 +246,7 @@ Quelques informations pratiques.
 
 
 
-
-
-
-<div class="app-card" onclick="openMap()">
+<div class="app-card" onclick="showSection('route')">
 
 
 <div class="icon">
@@ -289,15 +275,7 @@ Préparez votre arrivée.
 
 
 
-
-
-
 </section>
-
-
-
-
-
 
 
 
@@ -315,13 +293,11 @@ Préparez votre arrivée.
 </h2>
 
 
-
 <p>
 
 Entrez votre nom pour découvrir votre table.
 
 </p>
-
 
 
 <input 
@@ -348,11 +324,6 @@ Rechercher
 
 
 
-
-
-
-
-
 <!-- SAVEURS -->
 
 
@@ -366,7 +337,6 @@ Rechercher
 </h2>
 
 
-
 <p>
 
 Nous avons imaginé une réception aux couleurs de nos traditions,
@@ -375,57 +345,28 @@ avec une sélection de mets ivoiriens et de saveurs appréciées de tous.
 </p>
 
 
-
 <h3>
 🥗 Entrée
 </h3>
-
 
 <p>
 Salade composée fraîche
 </p>
 
 
-
-
-
 <h3>
 🍽️ Quelques plats traditionnels
 </h3>
 
-
 <ul>
-
-<li>
-Tchep au poisson et au bœuf
-</li>
-
-<li>
-Placali accompagné de sauce kopè
-</li>
-
-<li>
-Foutou banane accompagné de sauce graine
-</li>
-
-<li>
-Kplé accompagné de foutou manioc
-</li>
-
-<li>
-Foutou igname accompagné de sauce gouagouassou
-</li>
-
-<li>
-Poisson frit et poulet frit accompagnés d’alloco et de frites
-</li>
-
-<li>
-Igname bouillie accompagné de sauce tomate
-</li>
-
+<li>Tchep au poisson et au bœuf</li>
+<li>Placali accompagné de sauce kopè</li>
+<li>Foutou banane accompagné de sauce graine</li>
+<li>Kplé accompagné de foutou manioc</li>
+<li>Foutou igname accompagné de sauce gouagouassou</li>
+<li>Poisson frit et poulet frit accompagnés d’alloco et de frites</li>
+<li>Igname bouillie accompagné de sauce tomate</li>
 </ul>
-
 
 <h3>
 🍰 Douceur
@@ -434,7 +375,6 @@ Igname bouillie accompagné de sauce tomate
 <p>
 Wedding cake
 </p>
-
 
 <h3>
 🥤 Boissons
@@ -445,12 +385,6 @@ Eau minérale • Jus naturels • Boissons gazeuses • Bières • Vins
 </p>
 
 </section>
-
-
-
-
-
-
 
 
 
@@ -466,43 +400,26 @@ Eau minérale • Jus naturels • Boissons gazeuses • Bières • Vins
 
 </h2>
 
-
 <p>
-
 Votre présence est le plus beau témoignage d'affection
 que nous puissions recevoir.
-
 </p>
 
-
 <p>
-
 Pour celles et ceux qui souhaiteraient néanmoins nous offrir un présent,
 nous privilégions les cadeaux en espèces, afin de pouvoir les emporter
 plus facilement avec nous à notre retour à Dakar.
-
 </p>
 
-
 <p>
-
 Un dispositif discret sera prévu lors de la réception.
-
 </p>
 
 <strong>
-
 Merci du fond du cœur pour votre délicatesse.
-
 </strong>
 
 </section>
-
-
-
-
-
-
 
 
 
@@ -546,16 +463,11 @@ Ouvrir Google Maps — Menara Garden
 
 
 
-
-
 </main>
 
 
 
-
 </div>
-
-
 
 
 <script src="script.js"></script>
@@ -563,24 +475,17 @@ Ouvrir Google Maps — Menara Garden
 
 <script>
 
-
 if ("serviceWorker" in navigator) {
-
 
 window.addEventListener("load", function(){
 
-
 navigator.serviceWorker.register("service-worker.js");
-
 
 });
 
-
 }
 
-
 </script>
-
 
 
 </body>
