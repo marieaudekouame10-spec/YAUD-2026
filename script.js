@@ -25,8 +25,10 @@ function enterUniverse(){
 
     document.querySelector(".hero").style.display="none";
 
-    document.getElementById("universe")
+    document
+    .getElementById("universe")
     .classList.remove("hidden");
+
 
     window.scrollTo({
 
@@ -41,15 +43,15 @@ function enterUniverse(){
 
 
 
-// Afficher une rubrique
+
+// Navigation entre les rubriques
 
 function showSection(id){
 
 
-    let sections = document.querySelectorAll(".hidden-section");
-
-
-    sections.forEach(section=>{
+    document
+    .querySelectorAll(".hidden-section")
+    .forEach(section=>{
 
         section.style.display="none";
 
@@ -57,13 +59,14 @@ function showSection(id){
 
 
 
-    let selected = document.getElementById(id);
+    let section =
+    document.getElementById(id);
 
 
-    selected.style.display="block";
+    section.style.display="block";
 
 
-    selected.scrollIntoView({
+    section.scrollIntoView({
 
         behavior:"smooth"
 
@@ -77,7 +80,7 @@ function showSection(id){
 
 
 
-// Nettoyage recherche
+// Nettoyage des recherches
 
 function normalize(text){
 
@@ -90,11 +93,127 @@ function normalize(text){
 
     .replace(/[\u0300-\u036f]/g,"")
 
-    .replace(/[-]/g," ")
+    .replace(/[’']/g," ")
+
+    .replace(/-/g," ")
 
     .replace(/\s+/g," ")
 
     .trim();
+
+}
+
+
+
+
+
+
+
+// Recherche intelligente
+
+function searchTable(){
+
+
+let input =
+document
+.getElementById("searchGuest")
+.value;
+
+
+
+let resultBox =
+document.getElementById("result");
+
+
+
+if(input.length < 2){
+
+
+resultBox.innerHTML =
+
+`
+<p>
+Veuillez entrer votre nom.
+</p>
+`;
+
+return;
+
+}
+
+
+
+
+let search =
+normalize(input);
+
+
+
+
+
+let matches =
+guests.filter(person=>{
+
+
+let fullName =
+normalize(
+person.prenom + " " + person.nom
+);
+
+
+
+let reverseName =
+normalize(
+person.nom + " " + person.prenom
+);
+
+
+
+return (
+
+fullName.includes(search)
+
+||
+
+reverseName.includes(search)
+
+||
+
+normalize(person.prenom)
+.includes(search)
+
+||
+
+normalize(person.nom)
+.includes(search)
+
+);
+
+
+});
+
+
+
+
+
+
+
+
+if(matches.length === 0){
+
+
+resultBox.innerHTML =
+
+`
+
+<p>
+Aucun invité trouvé.<br>
+Vérifiez l'orthographe.
+</p>
+
+`;
+
+return;
 
 
 }
@@ -103,142 +222,126 @@ function normalize(text){
 
 
 
-// Recherche invité
 
-function searchTable(){
 
 
-    let input =
-    document
-    .getElementById("searchGuest")
-    .value;
+// Plusieurs personnes trouvées
 
+if(matches.length > 1){
 
 
-    if(input.length < 2){
 
-        document.getElementById("result").innerHTML =
-        `
-        <p>
-        Veuillez entrer votre nom.
-        </p>
-        `;
+resultBox.innerHTML =
 
-        return;
 
-    }
+`
 
+<p>
+Plusieurs invités correspondent.
+Veuillez sélectionner votre nom :
+</p>
 
 
-    let search =
-    normalize(input);
+${matches.map((person,index)=>`
 
 
+<button 
+class="choice"
+onclick="showGuest(${index})">
 
-    let result =
-    guests.find(person=>{
+${person.prenom} ${person.nom}
 
+</button>
 
-        let fullName =
-        normalize(
-        person.prenom + " " + person.nom
-        );
 
+`).join("")}
 
-        let reverseName =
-        normalize(
-        person.nom + " " + person.prenom
-        );
+`;
 
 
 
-        return (
+window.currentMatches = matches;
 
-            fullName.includes(search)
 
-            ||
+return;
 
-            reverseName.includes(search)
 
-            ||
+}
 
-            normalize(person.prenom)
-            .includes(search)
 
-            ||
 
-            normalize(person.nom)
-            .includes(search)
 
-        );
 
 
-    });
+showGuestResult(matches[0]);
 
 
 
+}
 
 
 
-    if(result){
 
 
-        document
-        .getElementById("result")
-        .innerHTML =
 
 
-        `
 
-        <div class="guest-result">
 
-        <h3>
-        Bonjour ${result.prenom} ✨
-        </h3>
+// Afficher après sélection
 
+function showGuest(index){
 
-        <p>
-        Nous sommes heureux de vous accueillir
-        pour cette belle journée.
-        </p>
 
+let person =
+window.currentMatches[index];
 
-        <strong>
-        🌿 Votre table :
-        </strong>
 
+showGuestResult(person);
 
-        <h2>
-        ${result.table}
-        </h2>
 
+}
 
-        </div>
 
-        `;
 
 
-    }
 
-    else{
 
 
-        document
-        .getElementById("result")
-        .innerHTML =
+function showGuestResult(person){
 
 
-        `
 
-        <p>
-        Aucun invité trouvé.
-        Vérifiez l'orthographe de votre nom.
-        </p>
+document
+.getElementById("result")
+.innerHTML =
 
-        `;
 
+`
 
-    }
+<div class="guest-result">
+
+
+<h3>
+Bonjour ${person.prenom} ✨
+</h3>
+
+
+<p>
+Nous sommes heureux de vous accueillir
+pour cette belle journée.
+</p>
+
+
+
+<h2>
+🌿 ${person.table}
+</h2>
+
+
+</div>
+
+
+`;
 
 
 
