@@ -35,7 +35,7 @@
 <section class="hero">
 
 
-<div class="overlay"></div>
+<div class="overlay" aria-hidden="true"></div>
 
 
 <div class="hero-content">
@@ -44,11 +44,11 @@
 <div class="photos-couple">
 
 
-<img src="Couple1.jpg" alt="Yoane et Marie-Aude">
+<img src="Couple1.jpg" alt="Yoane et Marie-Aude" loading="lazy">
 
-<img src="Couple2.jpg" alt="Yoane et Marie-Aude">
+<img src="Couple2.jpg" alt="Yoane et Marie-Aude" loading="lazy">
 
-<img src="Couple3.jpg" alt="Yoane et Marie-Aude">
+<img src="Couple3.jpg" alt="Yoane et Marie-Aude" loading="lazy">
 
 
 </div>
@@ -101,7 +101,7 @@ Tropical Sunset
 
 
 
-<button onclick="enterUniverse()">
+<button onclick="enterUniverse()" aria-label="Entrer dans notre univers">
 
 Entrer dans notre univers
 
@@ -115,8 +115,11 @@ Entrer dans notre univers
 </section>
 
 
-
-
+<!-- Verse visible on homepage (requested) -->
+<section class="verse card homepage-verse">
+  <p>« Par-dessus tout, revêtez-vous de l’amour, qui est le lien de la perfection. »</p>
+  <span>Colossiens 3:14</span>
+</section>
 
 
 
@@ -126,7 +129,6 @@ Entrer dans notre univers
 
 
 <main id="universe" class="hidden">
-
 
 
 
@@ -420,6 +422,7 @@ Merci du fond du cœur pour votre délicatesse.
 </strong>
 
 </section>
+
 
 
 
